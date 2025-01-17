@@ -2,17 +2,17 @@ import React from "react";
 import "../index.css";
 import DashboardLayout from "../layout/dashboard-layout";
 import Breadcrumb from "../components/Breadcrumb";
-import InvoiceTable from "../components/InvoiceDetails";
-const Invoice = () => {
+import ContactForm from "../components/ContactForm";
+const Dashboard = () => {
 
   return (
     <>
     <DashboardLayout>
-      <Breadcrumb title="Invoice" />
-      <InvoiceTable />
+      <Breadcrumb title="Contact" />
+<ContactForm />
     </DashboardLayout>
     </>
   );
 };
 
-export default Invoice;
+export default Dashboard;

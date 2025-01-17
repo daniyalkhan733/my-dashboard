@@ -5,8 +5,9 @@ import {
   Navigate,
 } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
-
+import ContactForm from "./pages/contact";
 import Invoice from "./pages/invoice";
+import CharityProfile from "./pages/profile";
 
 function App() {
 
@@ -18,6 +19,9 @@ function App() {
             <Route path="/" element={<Navigate to="/dashboard" />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/invoice" element={<Invoice />} />
+            <Route path="/contact" element={<ContactForm />} />
+            <Route path="/profile" element={<CharityProfile />} />
+
             {/* <Route path="/reports" element={<Checkout />} />
             <Route path="/contact" element={<Checkout />} /> */}
 
