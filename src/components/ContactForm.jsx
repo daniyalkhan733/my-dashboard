@@ -24,12 +24,12 @@ const ContactForm = () => {
 
     try {
       // First email - to the user
-      const apikey = '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';
+      const test = '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';
       await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'api-key': apikey
+          'api-key': test
         },
         body: JSON.stringify({
           sender: { email: 'server@technoservesolutions.com' },
@@ -53,7 +53,7 @@ const ContactForm = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'api-key': apikey
+          'api-key': test
         },
         body: JSON.stringify({
           sender: { email: 'server@technoservesolutions.com' },
