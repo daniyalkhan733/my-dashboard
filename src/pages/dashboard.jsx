@@ -4,13 +4,12 @@ import DashboardLayout from "../layout/dashboard-layout";
 import Breadcrumb from "../components/Breadcrumb";
 import DashboardDetails from "../components/Dashboard";
 const Dashboard = () => {
-
   return (
     <>
-    <DashboardLayout>
-      <Breadcrumb title="Dashboard" />
-<DashboardDetails />
-    </DashboardLayout>
+      <DashboardLayout>
+        <Breadcrumb title="Dashboard" />
+        <DashboardDetails />
+      </DashboardLayout>
     </>
   );
 };

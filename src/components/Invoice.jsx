@@ -96,5 +96,4 @@ const InvoiceTable = () => {
     </div>
   );
 };
-
 export default InvoiceTable;

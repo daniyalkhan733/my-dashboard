@@ -7,29 +7,23 @@ import {
 import Dashboard from "./pages/dashboard";
 import ContactForm from "./pages/contact";
 import Invoice from "./pages/invoice";
-import CharityProfile from "./pages/profile";
+import Profile from "./pages/profile";
 
 function App() {
-
   return (
-      <>
-        <Router>
-          {/* <Toaster /> */}
-          <Routes>
-            <Route path="/" element={<Navigate to="/dashboard" />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/invoice" element={<Invoice />} />
-            <Route path="/contact" element={<ContactForm />} />
-            <Route path="/profile" element={<CharityProfile />} />
-
-            {/* <Route path="/reports" element={<Checkout />} />
-            <Route path="/contact" element={<Checkout />} /> */}
-
-
-            <Route path="*" element={<Navigate to="/dashboard" />} />
-          </Routes>
-        </Router>
-      </>
+    <>
+      <Router>
+        {/* <Toaster /> */}
+        <Routes>
+          <Route path="/" element={<Navigate to="/dashboard" />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/invoice" element={<Invoice />} />
+          <Route path="/contact" element={<ContactForm />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<Navigate to="/dashboard" />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

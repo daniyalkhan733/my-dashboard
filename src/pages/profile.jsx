@@ -4,13 +4,12 @@ import DashboardLayout from "../layout/dashboard-layout";
 import Breadcrumb from "../components/Breadcrumb";
 import CharityProfile from "../components/CharityProfile";
 const Invoice = () => {
-
   return (
     <>
-    <DashboardLayout>
-      <Breadcrumb title="Profile" />
-      <CharityProfile />
-    </DashboardLayout>
+      <DashboardLayout>
+        <Breadcrumb title="Profile" />
+        <CharityProfile />
+      </DashboardLayout>
     </>
   );
 };
