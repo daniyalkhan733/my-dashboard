@@ -67,7 +67,7 @@ const Sidebar = () => {
                     <span className="mr-4">
                       <img src={item.icon} alt="" />
                     </span>
-                    <span className={activeItem === item.id ? 'text-white hover:text-black' : ''}>
+                    <span className={activeItem === item.id ? ' hover:text-black' : ''}>
                       {item.label}
                     </span>
                   </div>

@@ -8,10 +8,14 @@ import Dashboard from "./pages/dashboard";
 import ContactForm from "./pages/contact";
 import Invoice from "./pages/invoice";
 import Profile from "./pages/profile";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
+  const queryClient = new QueryClient();
   return (
     <>
+        <QueryClientProvider client={queryClient}>
+
       <Router>
         {/* <Toaster /> */}
         <Routes>
@@ -23,6 +27,7 @@ function App() {
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>
       </Router>
+        </QueryClientProvider>
     </>
   );
 }
