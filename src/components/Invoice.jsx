@@ -4,6 +4,7 @@ import { Filter } from "lucide-react";
 import SingleInvoiceRow from "./invoice/SingleInvoiceRow";
 import TablePagination from "./invoice/TablePagination";
 import DateFilterMenu from "./invoice/DateFilterMenu";
+import InvoiceFilterAccordion from "./common/InvoiceFilter";
 
 const InvoiceTable = () => {
   const [showFilterMenu, setShowFilterMenu] = useState(false);
@@ -31,38 +32,7 @@ const InvoiceTable = () => {
 
   return (
     <div className="space-y-4">
-      <div className="relative flex flex-row pt-4">
-        <button
-          onClick={() => setShowFilterMenu(!showFilterMenu)}
-          className="mb-4 flex items-center bg-black text-white py-2 px-4 rounded-lg shadow-lg hover:bg-gray-800"
-        >
-          <Filter className="w-5 h-5 mr-2 " />
-          <span>Filter</span>
-        </button>
-
-        {showFilterMenu && (
-          <div className="absolute top-12 left-0 w-48 bg-white shadow-lg rounded-lg z-10">
-            {/* Filter Menu Content */}
-            <ul>
-              <li className="border-b relative">
-                <button
-                  onClick={() => toggleSubmenu("date")}
-                  className="flex justify-between w-full text-left px-4 py-2 hover:bg-gray-100"
-                >
-                  Filter by Date
-                  <span>▶</span>
-                </button>
-                {activeSubmenu === "date" && (
-                  <div className="absolute left-full top-0 mt-0 w-96 bg-white shadow-lg rounded-lg z-20">
-                    <DateFilterMenu />
-                  </div>
-                )}
-              </li>
-              {/* Add other filter options similarly */}
-            </ul>
-          </div>
-        )}
-      </div>
+      <InvoiceFilterAccordion/>
 
       <div className="max-w-full overflow-x-auto h-96 overflow-y-auto bg-white rounded-lg shadow">
         <table className="w-full text-sm text-left">
