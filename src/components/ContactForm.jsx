@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Map from './map';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -87,7 +88,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div className="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto">
       <div className="max-w-2xl lg:max-w-5xl mx-auto">
         <div className="mt-12 grid lg:grid-cols-2 gap-6 lg:gap-16">
           {/* Form Card */}
@@ -176,18 +177,7 @@ const ContactForm = () => {
           </div>
 
           {/* Google Maps */}
-          <div className="rounded-lg overflow-hidden h-[500px]">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12886.066288551174!2d-1.932922515910446!3d52.4628555477903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870942d1b417173%3A0xca81fef0aeee7998!2sBirmingham%2C%20UK!5e0!3m2!1sen!2sin!4v1730972868170!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Google Maps"
-            />
-          </div>
+          <Map/>
         </div>
       </div>
     </div>

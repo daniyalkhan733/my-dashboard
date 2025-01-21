@@ -46,8 +46,6 @@ const CharityProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
-    console.log('Updated data:', formData);
     setIsEditing(false);
   };
 
