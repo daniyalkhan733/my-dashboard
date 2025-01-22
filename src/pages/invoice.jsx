@@ -6,10 +6,10 @@ import InvoiceTable from "../components/Invoice";
 const Invoice = () => {
   return (
     <>
-      <DashboardLayout>
+      <>
         <Breadcrumb title="Invoice" />
         <InvoiceTable />
-      </DashboardLayout>
+      </>
     </>
   );
 };
