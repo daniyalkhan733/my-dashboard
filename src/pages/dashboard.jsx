@@ -6,10 +6,10 @@ import DashboardDetails from "../components/Dashboard";
 const Dashboard = () => {
   return (
     <>
-      <DashboardLayout>
+      <>
         <Breadcrumb title="Dashboard" />
         <DashboardDetails />
-      </DashboardLayout>
+      </>
     </>
   );
 };

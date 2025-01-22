@@ -6,10 +6,10 @@ import CharityProfile from "../components/CharityProfile";
 const Invoice = () => {
   return (
     <>
-      <DashboardLayout>
+      <>
         <Breadcrumb title="Profile" />
         <CharityProfile />
-      </DashboardLayout>
+      </>
     </>
   );
 };
