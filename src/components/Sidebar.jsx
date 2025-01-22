@@ -13,8 +13,8 @@ const Sidebar = () => {
     const path = location.pathname;
     if (path.includes('/invoice')) {
       setActiveItem('invoice');
-    } else if (path.includes('/reports')) {
-      setActiveItem('reports');
+    } else if (path.includes('/report')) {
+      setActiveItem('report');
     } else if (path.includes('/contact')) {
       setActiveItem('contact');
     } else if (path.includes('/dashboard')) {
@@ -31,7 +31,7 @@ const Sidebar = () => {
   const navigationItems = [
     { id: 'dashboard', label: 'Dashboard', icon: '/assets/svg/sidebar/dashboard-w.svg', path: '/dashboard' },
     { id: 'invoice', label: 'Invoice', icon: '/assets/svg/sidebar/invoice-w.svg', path: '/invoice' },
-    { id: 'reports', label: 'Reports', icon: '/assets/svg/sidebar/reports-w.svg', path: '/reports' },
+    { id: 'report', label: 'Report', icon: '/assets/svg/sidebar/reports-w.svg', path: '/report/donation' },
     { id: 'contact', label: 'Contact', icon: '/assets/svg/sidebar/contact-w.svg', path: '/contact' }
   ];
 

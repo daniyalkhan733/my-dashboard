@@ -8,6 +8,7 @@ import Dashboard from "./pages/dashboard";
 import ContactForm from "./pages/contact";
 import Invoice from "./pages/invoice";
 import Profile from "./pages/profile";
+import DonationReport from "./pages/report/donation";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
@@ -17,13 +18,13 @@ function App() {
         <QueryClientProvider client={queryClient}>
 
       <Router>
-        {/* <Toaster /> */}
         <Routes>
           <Route path="/" element={<Navigate to="/dashboard" />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/invoice" element={<Invoice />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/report/donation" element={<DonationReport />} />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>
       </Router>
