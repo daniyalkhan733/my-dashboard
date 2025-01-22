@@ -7,14 +7,33 @@ const TransactionData = ({ transactions }) => {
         <h2 className="md:text-[28px] text-xl font-bold text-gray-800 align-middle">
           Last Transaction
         </h2>
+      <a href="/report/donation">
         <button className="px-4 py-2 bg-[#02343F] text-[12px] md:text-[16px] text-white rounded-lg hover:bg-[#034c5c]">
-          View More
-        </button>
+          View Donation Report
+        </button></a>
+      </div>
+      <div className=" gap-4 text-center w-96 md:w-full p-3 rounded-t-md bg-primary justify-between flex">
+        <div className="flex items-center rounded text-[18px] align-middle text-white font-semibold">
+         Category
+        </div>
+        <div className="pl-12 flex items-center rounded text-[18px] align-middle text-white font-semibold">
+         Donation Date
+        </div>
+        <div className="flex items-center rounded text-[18px] align-middle text-white font-semibold">
+         Program Name
+        </div>
+        <div className="flex justify-end items-center rounded text-[18px] text-white font-semibold">
+          Donation Amount
+        </div>
       </div>
       <div className="bg-white p-5 rounded-xl">
-        <div className="h-80 overflow-auto overflow-x-scroll  [&::-webkit-scrollbar]:w-2
-  [&::-webkit-scrollbar-track]:bg-gray-100
-  [&::-webkit-scrollbar-thumb]:bg-gray-300">
+        
+        <div className=" overflow-auto overflow-x-scroll rounded-md "  style={{
+             maxHeight: '70vh',
+             scrollbarWidth: 'thin',
+             scrollbarColor: '#004D40 white'
+           }}>
+          
           {transactions.map((transaction, index) => (
             <SingleTransactionRow key={index} {...transaction} />
           ))}

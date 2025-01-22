@@ -1,15 +1,12 @@
 import React from "react";
 import "../../index.css";
-import DashboardLayout from "../../layout/dashboard-layout";
 import Breadcrumb from "../../components/Breadcrumb";
-import DashboardDetails from "../../components/Dashboard";
+import DonationReport from "../../components/reports/DonationReport";
 const Dashboard = () => {
   return (
     <>
-      <DashboardLayout>
-        <Breadcrumb title="Dashboard" />
-        <DashboardDetails />
-      </DashboardLayout>
+        <Breadcrumb title="Donation Report" />
+        <DonationReport />
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDashboardData, useDonorData, useProgramData } from '../api/donationApi';
+import { useDashboardData, useDonorData, useProgramData , useTopDonor} from '../api/donationApi';
 import CardOne from './dashboard/CardOne';
 import CardTwo from './dashboard/CardTwo';
 import DonorTable from './dashboard/DonorTable';
@@ -15,10 +15,18 @@ const DashboardDetails = () => {
 
   const {
     data: donorData,
+    isLoading: isTopDonorLoading,
+    isError: isTopDonorError,
+    error: topdonorError,
+  } = useDonorData();
+
+  const {
+    data: topDonor,
     isLoading: isDonorLoading,
     isError: isDonorError,
     error: donorError,
-  } = useDonorData();
+  } = useTopDonor();
+  console.log(topDonor);
 
   const {
     data: programData,
@@ -26,6 +34,8 @@ const DashboardDetails = () => {
     isError: isProgramError,
     error: programError,
   } = useProgramData();
+
+
 
   console.log(dashboardData);
   
@@ -37,21 +47,21 @@ const DashboardDetails = () => {
     {
       title: 'Daily Donation',
       value: `£ ${dashboardData?.todays_donations || '0'}`,
-      description: `${dashboardData?.dailyGrowth || '+0'}% From Last Month`,
+      description: `${dashboardData?.dailyGrowth || '+20'}% From Yesterday`,
       src: "url('/assets/images/card1-one.png')",
       textColor: 'white',
     },
     {
       title: 'Weekly Donation',
       value: `£ ${dashboardData?.weekly_donations || '0'}`,
-      description: `${dashboardData?.weeklyGrowth || '+0'}% From Last Month`,
+      description: `${dashboardData?.weeklyGrowth || '+10'}% From Last Month`,
       src: "url('/assets/images/card1-two.png')",
       textColor: 'black',
     },
     {
       title: 'Monthly Donation',
       value: `£ ${dashboardData?.monthly_donations || '0'}`,
-      description: `${dashboardData?.monthlyGrowth || '+0'}% From Last Month`,
+      description: `${dashboardData?.monthlyGrowth || '+30'}% From Last Month`,
       src: "url('/assets/images/card1-three.png')",
       textColor: 'white',
     },
@@ -122,7 +132,7 @@ const DashboardDetails = () => {
         </div>
 
         {/* Donor Table */}
-        <DonorTable donors={donorData?.donors_dist?.data || []} />
+        <DonorTable donors={topDonor.top_donors || []} />
       </div>
     </div>
   );

@@ -5,10 +5,10 @@ const SingleTransactionRow = ({ category_name, donation_date, program_name, net_
         <div className="flex items-center pb-2 rounded text-[18px] align-middle text-[#1E293B] font-semibold">
           {category_name}
         </div>
-        <div className="flex items-center justify-center rounded text-[12px] align-middle text-[#64748B]">
+        <div className="flex items-center justify-center rounded text-[16px] align-middle text-[#64748B]">
           {donation_date}
         </div>
-        <div className="flex items-center justify-center rounded text-[12px] align-middle text-[#64748B]">
+        <div className="flex items-center justify-center rounded text-[16px] align-middle text-[#64748B]">
           {program_name}
         </div>
         <div className="flex justify-end items-center pb-2 rounded text-[18px] text-[#1E293B] font-semibold">

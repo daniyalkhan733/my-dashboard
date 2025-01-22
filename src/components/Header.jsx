@@ -73,13 +73,13 @@ const Header = ({ charityName }) => {
           </div>
 
           {/* Notification Button */}
-          <button className="p-2 bg-white rounded-full shadow-md hover:bg-indigo-50 focus:outline-none">
+          {/* <button className="p-2 bg-white rounded-full shadow-md hover:bg-indigo-50 focus:outline-none">
             <img
               src="/assets/svg/notification.svg"
               alt=""
               className="w-8 p-1"
             />
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
