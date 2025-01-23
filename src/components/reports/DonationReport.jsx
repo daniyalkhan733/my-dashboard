@@ -30,7 +30,7 @@ const DonationReport = () => {
 
     const csvData = filteredData.map((row) => [
       formatDate(row.donation_date),
-      row.donor_id,
+      row.donation_id,
       row.donor_name,
       row.category,
       row.donation_amount,
@@ -67,7 +67,7 @@ const DonationReport = () => {
 
   const columns = [
     { key: "donation_date", label: "Date", type: "date" },
-    { key: "donor_id", label: "Donation ID", type: "text" },
+    { key: "donation_id", label: "Donation ID", type: "text", placeholder :"Search by ID" },
     { key: "donor_name", label: "Donor Name", type: "text" },
     {
       key: "category",
@@ -120,7 +120,7 @@ const DonationReport = () => {
           className="w-full px-6 py-4 flex justify-between items-center bg-white hover:bg-[#F5E6D3]/10 transition-colors rounded-lg"
         >
           <div className="flex items-center space-x-2">
-            <span className="font-semibold text-[#02343F]">Filters</span>
+            <span className="font-semibold text-[#02343F]">Filter Donations</span>
             {Object.keys(filters).length > 0 && (
               <span className="bg-[#02343F] text-white px-2 py-0.5 rounded-full text-sm">
                 {Object.keys(filters).length}
@@ -174,9 +174,10 @@ const DonationReport = () => {
                       type="text"
                       value={filters[key] || ""}
                       onChange={(e) => handleFilterChange(key, e.target.value)}
-                      placeholder={`Filter `}
+                      placeholder={key === "donation_id" ? "Search by ID" : "Search by donor name"}
                       className="w-full p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
                     />
+                    
                   )}
                 </div>
               ))}

@@ -1,6 +1,7 @@
 const SingleDonor = ({ item }) => {
 
   return (
+    <>
     <div className="flex justify-between items-center py-2">
       <div>
         <p className="text-[14px] font-semibold text-[#0F172A] truncate max-w-[100px]">
@@ -13,6 +14,8 @@ const SingleDonor = ({ item }) => {
         <span className="text-[14px] font-semibold text-[#0F172A]">£ {item.total_donation_amount}</span>
       </div>
     </div>
+          <hr className="my-1 border-[#D2D2D2]" />
+          </>
   )
 };
 export default SingleDonor;
