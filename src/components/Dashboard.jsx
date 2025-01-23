@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDashboardData, useDonorData, useProgramData , useTopDonor} from '../api/donationApi';
+import { useDashboardData, useProgramData , useTopDonor} from '../api/donationApi';
 import CardOne from './dashboard/CardOne';
 import CardTwo from './dashboard/CardTwo';
 import DonorTable from './dashboard/DonorTable';
@@ -13,12 +13,6 @@ const DashboardDetails = () => {
     error: dashboardError,
   } = useDashboardData();
 
-  const {
-    data: donorData,
-    isLoading: isTopDonorLoading,
-    isError: isTopDonorError,
-    error: topdonorError,
-  } = useDonorData();
 
   const {
     data: topDonor,
@@ -119,7 +113,7 @@ const DashboardDetails = () => {
             />
             <CardTwo
               title="Total Donors"
-              value={donorData?.total_donors || '0'}
+              value={'0'}
               description={`+${dashboardData?.count_last_donor_data || '0'} New Donors`}
             />
             <CardTwo

@@ -9,11 +9,6 @@ const fetchDashboardData = async () => {
     return data;
 };
 
-const fetchDonorData = async () => {
-    const axiosInstance = createAxiosInstance();
-    const { data } = await axiosInstance.get("dashboard/donor-data");
-    return data;
-};
 const fetchTopDonor = async () => {
   const axiosInstance = createAxiosInstance();
   const { data } = await axiosInstance.get("dashboard/top-donors");
@@ -51,14 +46,6 @@ const useProgramData = () => {
   };
 
 
-const useDonorData = () => {
-    return useQuery({
-      queryKey: ['donorData'],
-      queryFn: fetchDonorData,
-      staleTime: 5 * 60 * 1000, // Consider data fresh for 5 minutes
-      refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
-    });
-  };
   const useTopDonor = () => {
     return useQuery({
       queryKey: ['topDonorData'],
@@ -77,4 +64,4 @@ const useDashboardData = () => {
     });
 };
 
-export  {useDashboardData, useDonorData,useProgramData ,useTopDonor ,useDonationData};
+export  {useDashboardData,useProgramData ,useTopDonor ,useDonationData};

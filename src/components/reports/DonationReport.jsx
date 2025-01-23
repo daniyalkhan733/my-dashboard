@@ -112,7 +112,7 @@ const DonationReport = () => {
       <div className="w-full rounded-lg shadow-sm border border-[#F5E6D3]">
         <button
           onClick={() => setIsFilterOpen(!isFilterOpen)}
-          className="w-full px-6 py-4 flex justify-between items-center bg-white hover:bg-[#F5E6D3]/10 transition-colors rounded-lg"
+          className="w-full px-6 py-4 flex justify-between items-center bg-white transition-colors rounded-lg"
         >
           <div className="flex items-center space-x-2">
             <span className="font-semibold text-[#02343F]">Filters</span>
@@ -130,7 +130,7 @@ const DonationReport = () => {
         </button>
 
         {isFilterOpen && (
-          <div className="px-6 py-4 border-t border-[#F5E6D3]">
+          <div className="px-6 py-4 border-t border-[#F5E6D3] bg-white">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
               {columns.map(({ key, label, type, options }) => (
                 <div key={key} className="space-y-2">
