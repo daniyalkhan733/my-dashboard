@@ -4,6 +4,7 @@ import {
   Route,
   Navigate,
   useLocation,
+  useLocation,
 } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
 import ContactForm from "./pages/contact";
@@ -32,6 +33,16 @@ const LayoutProvider = ({ children }) => {
 
 function App() {
   const queryClient = new QueryClient();
+
+  const LayoutWrapper = ({ children }) => {
+    const location = useLocation();
+    const noLayoutPaths = ["/login"]; // Define routes without layout
+
+    const isNoLayout = noLayoutPaths.includes(location.pathname);
+
+    return isNoLayout ? children : <DashboardLayout>{children}</DashboardLayout>;
+  };
+
   return (
     <>
       <QueryClientProvider client={queryClient}>

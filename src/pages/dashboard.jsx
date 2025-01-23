@@ -4,6 +4,11 @@ import DashboardLayout from "../layout/dashboard-layout";
 import Breadcrumb from "../components/Breadcrumb";
 import DashboardDetails from "../components/Dashboard";
 const Dashboard = () => {
+
+// if(!localStorage.getItem('token')){
+//   window.location.href = '/login';
+// }
+
   return (
     <>
       <>

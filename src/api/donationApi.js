@@ -6,27 +6,29 @@ import createAxiosInstance from './axiosInstance';
 const fetchDashboardData = async () => {
     const axiosInstance = createAxiosInstance();
     const { data } = await axiosInstance.get("dashboard/dashboard-data");
+    console.log("this is eugjb",data);
     return data;
 };
 
 const fetchTopDonor = async () => {
   const axiosInstance = createAxiosInstance();
   const { data } = await axiosInstance.get("dashboard/top-donors");
+  console.log("this is top donor",data);
   return data;
 };
 
-
-const fetchProgramData = async () => {
-    const axiosInstance = createAxiosInstance();
-    const { data } = await axiosInstance.get("dashboard/total-program-count");
-    return data;
-};
 const fetchDonationData = async () => {
   const axiosInstance = createAxiosInstance();
-  const { data } = await axiosInstance.get("donation/donation-data");
+  const { data } = await axiosInstance.get("dashboard/donation-data");
   console.log("this is donation data",data);
   return data;
 };
+
+// const fetchLogin = async () => {
+//   const axiosInstance = createAxiosInstance();
+//   const { data } = await axiosInstance.post("dashboard/login");
+//   return data;
+// };
 const useDonationData = () => {
   return useQuery({
     queryKey: ['donationData'],
