@@ -1,6 +1,9 @@
 import SingleTransactionRow from "./SingleTransactionRow";
 const TransactionData = ({ transactions }) => {
 
+  console.log(transactions,);
+  
+  
   return (
     <section className="m-[-20px] p-2 pt-10">
       <div className="flex items-center justify-between mb-1 pb-8">
@@ -26,6 +29,15 @@ const TransactionData = ({ transactions }) => {
           Donation Amount
         </div>
       </div>
+      <thead className="sticky top-0 bg-[#02343F] text-white">
+              <tr>
+                {["Category"].map(({ key }) => (
+                  <th key={key} className="p-4 font-semibold">
+                    <span>{key}</span>
+                  </th>
+                ))}
+              </tr>
+            </thead>
       <div className="bg-white p-5 rounded-xl">
         
         <div className=" overflow-auto overflow-x-scroll rounded-md "  style={{

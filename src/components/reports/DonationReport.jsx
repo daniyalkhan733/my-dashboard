@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { Download, ChevronDown, ChevronUp, X } from "lucide-react";
+import NoDonationsFound from "./NoDonations";
 import { useDonationData } from "../../api/donationApi";
 import Loader from "../loader";
 
@@ -17,7 +17,6 @@ const DonationReport = () => {
     }
   };
 
-  // Download CSV function
   const downloadCSV = () => {
     const headers = [
       "Date",
@@ -50,13 +49,14 @@ const DonationReport = () => {
     link.download = "donation_report.csv";
     link.click();
   };
+
   const {
     data: donationData,
     isLoading: isDonationLoading,
     isError: isDonationError,
     error: donationError,
   } = useDonationData();
-  console.log(donationData);
+
   if (isDonationError) {
     return <div className="text-red-500">{donationError.message}</div>;
   }
@@ -73,43 +73,48 @@ const DonationReport = () => {
       key: "category",
       label: "Category",
       type: "select",
-      options: ["Fitrana", "Sadqah"],
+      options: [...new Set(donationData.map((item) => item.category))],
     },
     { key: "donation_amount", label: "Amount", type: "number" },
-    { key: "program_name", label: "Program Name", type: "text" },
-    { key: "program_country", label: "Program Country", type: "text" },
+    {
+      key: "program_name",
+      label: "Program Name",
+      type: "select",
+      options: [...new Set(donationData.map((item) => item.program_name))],
+    },
+    {
+      key: "program_country",
+      label: "Program Country",
+      type: "select",
+      options: [...new Set(donationData.map((item) => item.program_country))],
+    },
   ];
 
   const handleFilterChange = (key, value) => {
-    setFilters((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
+    setFilters((prev) => ({ ...prev, [key]: value }));
   };
 
-  const clearAllFilters = () => {
-    setFilters({});
-  };
+  const clearAllFilters = () => setFilters({});
 
   const clearFilter = (key) => {
     const { [key]: removed, ...remaining } = filters;
     setFilters(remaining);
   };
 
-  const filteredData = donationData.donations.filter((item) => {
-    return Object.entries(filters).every(([key, value]) => {
+  const filteredData = donationData.filter((item) =>
+    Object.entries(filters).every(([key, value]) => {
       if (!value) return true;
       if (key === "donation_amount") {
         return item[key] >= parseFloat(value);
       }
       return item[key]?.toString().toLowerCase().includes(value.toLowerCase());
-    });
-  });
+    })
+  );
 
   return (
     <div className="w-full space-y-4">
       {/* Filter Accordion */}
-      <div className="w-full rounded-lg shadow-sm border border-[#F5E6D3]">
+      <div className="w-full rounded-lg shadow-sm border border-primary/80">
         <button
           onClick={() => setIsFilterOpen(!isFilterOpen)}
           className="w-full px-6 py-4 flex justify-between items-center bg-white hover:bg-[#F5E6D3]/10 transition-colors rounded-lg"
@@ -128,9 +133,8 @@ const DonationReport = () => {
             <ChevronDown className="w-5 h-5 text-[#02343F]" />
           )}
         </button>
-
         {isFilterOpen && (
-          <div className="px-6 py-4 border-t border-[#F5E6D3]">
+          <div className="px-6 py-4 border-t border-primary/50">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
               {columns.map(({ key, label, type, options }) => (
                 <div key={key} className="space-y-2">
@@ -141,7 +145,7 @@ const DonationReport = () => {
                     <select
                       value={filters[key] || ""}
                       onChange={(e) => handleFilterChange(key, e.target.value)}
-                      className="w-full p-2 border border-[#F5E6D3] rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
+                      className="w-full p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
                     >
                       <option value="">All</option>
                       {options.map((option) => (
@@ -156,22 +160,22 @@ const DonationReport = () => {
                       value={filters[key] || ""}
                       onChange={(e) => handleFilterChange(key, e.target.value)}
                       placeholder="Min amount..."
-                      className="w-full p-2 border border-[#F5E6D3] rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
+                      className="w-full p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
                     />
                   ) : type === "date" ? (
                     <input
                       type="date"
                       value={filters[key] || ""}
                       onChange={(e) => handleFilterChange(key, e.target.value)}
-                      className="w-full p-2 border border-[#F5E6D3] rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
+                      className="w-full p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
                     />
                   ) : (
                     <input
                       type="text"
                       value={filters[key] || ""}
                       onChange={(e) => handleFilterChange(key, e.target.value)}
-                      placeholder={`Filter by £{label.toLowerCase()}...`}
-                      className="w-full p-2 border border-[#F5E6D3] rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
+                      placeholder={`Filter `}
+                      className="w-full p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
                     />
                   )}
                 </div>
@@ -203,7 +207,7 @@ const DonationReport = () => {
               </div>
             )}
           </div>
-        )}
+        )}{" "}
       </div>
 
       {/* Table Actions */}
@@ -219,6 +223,7 @@ const DonationReport = () => {
           Download CSV
         </button>
       </div>
+
       {/* Table */}
       <div
         className="relative overflow-x-auto rounded-md shadow-lg"
@@ -228,39 +233,46 @@ const DonationReport = () => {
           scrollbarColor: "#004D40 white",
         }}
       >
-        <table className="w-full text-left">
-          <thead className="sticky top-0 bg-[#02343F] text-white">
-            <tr>
-              {columns.map(({ key, label }) => (
-                <th key={key} className="p-4 font-semibold">
-                  <span>{label}</span>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[#F5E6D3] bg-white">
-            {filteredData.map((donation, index) => (
-              <tr
-                key={index}
-                className="hover:bg-[#F5E6D3]/20 transition-colors duration-200"
-              >
-                <td className="p-4">{formatDate(donation.donation_date)}</td>
-                <td className="p-4">D0{donation.donation_id || "N/A"}</td>
-                <td className="p-4">{donation.donor_name || "Anonymous"}</td>
-                <td className="p-4">{donation.category || "Uncategorized"}</td>
-                <td className="p-4">
-                  £{(donation.donation_amount || 0).toLocaleString()}
-                </td>
-                <td className="p-4">
-                  {donation.program_name || "General Fund"}
-                </td>
-                <td className="p-4">
-                  {donation.program_country || "International"}
-                </td>
+        {filteredData.length === 0 ? (
+          <NoDonationsFound setFilters={setFilters} />
+        ) : (
+          <table className="w-full text-left">
+            <thead className="sticky top-0 bg-[#02343F] text-white">
+              <tr>
+                {columns.map(({ key, label }) => (
+                  <th key={key} className="p-4 font-semibold">
+                    <span>{label}</span>
+                  </th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody className="divide-y divide-[#F5E6D3] bg-white">
+              {filteredData.map((donation, index) => (
+                <tr
+                  key={index}
+                  className="hover:bg-[#F5E6D3]/20 transition-colors duration-200"
+                >
+                  <td className="p-4">{formatDate(donation.donation_date)}</td>
+                  <td className="p-4">D0{donation.donation_id || "N/A"}</td>
+                  <td className="p-4">{donation.donor_name || "Anonymous"}</td>
+                  <td className="p-4">
+                    {donation.category || "Uncategorized"}
+                  </td>
+                  <td className="p-4">
+                    £{(donation.donation_amount || 0).toLocaleString()}
+                  </td>
+                  <td className="p-4">
+                    {donation.program_name || "General Fund"}
+                  </td>
+                  <td className="p-4">
+                    {donation.program_country || "International"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

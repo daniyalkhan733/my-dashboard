@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDashboardData, useDonorData, useProgramData , useTopDonor} from '../api/donationApi';
+import { useDashboardData, useTopDonor ,useDonationData} from '../api/donationApi';
 import CardOne from './dashboard/CardOne';
 import CardTwo from './dashboard/CardTwo';
 import DonorTable from './dashboard/DonorTable';
@@ -12,13 +12,18 @@ const DashboardDetails = () => {
     isError: isDashboardError,
     error: dashboardError,
   } = useDashboardData();
+  console.log(dashboardData);
 
-  const {
-    data: donorData,
-    isLoading: isTopDonorLoading,
-    isError: isTopDonorError,
-    error: topdonorError,
-  } = useDonorData();
+const {
+    data: donationData,
+    isLoading: isDonationLoading,
+    isError: isDonationError,
+    error: donationError,
+  } = useDonationData();
+  console.log("this is donation data",donationData);
+  if (isDonationError) {
+    return <div className="text-red-500">{donationError.message}</div>;
+  }
 
   const {
     data: topDonor,
@@ -28,39 +33,29 @@ const DashboardDetails = () => {
   } = useTopDonor();
   console.log(topDonor);
 
-  const {
-    data: programData,
-    isLoading: isProgramLoading,
-    isError: isProgramError,
-    error: programError,
-  } = useProgramData();
-
-
-
-  console.log(dashboardData);
   
 
-  const isLoading = isDashboardLoading || isDonorLoading || isProgramLoading;
-  const isError = isDashboardError || isDonorError || isProgramError;
+  const isLoading = isDashboardLoading || isDonorLoading ;
+  const isError = isDashboardError || isDonorError ;
 
   const cardOneData = [
     {
       title: 'Daily Donation',
-      value: `£ ${dashboardData?.todays_donations || '0'}`,
+      value: `£ ${dashboardData?.today || '0'}`,
       description: `${dashboardData?.dailyGrowth || '+20'}% From Yesterday`,
       src: "url('/assets/images/card1-one.png')",
       textColor: 'white',
     },
     {
       title: 'Weekly Donation',
-      value: `£ ${dashboardData?.weekly_donations || '0'}`,
+      value: `£ ${dashboardData?.weekly || '0'}`,
       description: `${dashboardData?.weeklyGrowth || '+10'}% From Last Month`,
       src: "url('/assets/images/card1-two.png')",
       textColor: 'black',
     },
     {
       title: 'Monthly Donation',
-      value: `£ ${dashboardData?.monthly_donations || '0'}`,
+      value: `£ ${dashboardData?.monthly || '0'}`,
       description: `${dashboardData?.monthlyGrowth || '+30'}% From Last Month`,
       src: "url('/assets/images/card1-three.png')",
       textColor: 'white',
@@ -119,20 +114,20 @@ const DashboardDetails = () => {
             />
             <CardTwo
               title="Total Donors"
-              value={donorData?.total_donors || '0'}
+              value={dashboardData?.total_donors || '0'}
               description={`+${dashboardData?.count_last_donor_data || '0'} New Donors`}
             />
             <CardTwo
               title="Active Campaign"
-              value={programData?.total_programs || '0'}
+              value={dashboardData?.total_programs || '0'}
               description={`+${dashboardData?.count_last_program_data || '0'} New Campaign`}
             />
           </div>
-          <TransactionData transactions={dashboardData?.donation_detail || []} />
+          <TransactionData transactions={donationData || []} />
         </div>
 
         {/* Donor Table */}
-        <DonorTable donors={topDonor.top_donors || []} />
+        <DonorTable donors={topDonor || []} />
       </div>
     </div>
   );

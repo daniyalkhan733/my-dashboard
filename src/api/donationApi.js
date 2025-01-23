@@ -6,32 +6,29 @@ import createAxiosInstance from './axiosInstance';
 const fetchDashboardData = async () => {
     const axiosInstance = createAxiosInstance();
     const { data } = await axiosInstance.get("dashboard/dashboard-data");
+    console.log("this is eugjb",data);
     return data;
 };
 
-const fetchDonorData = async () => {
-    const axiosInstance = createAxiosInstance();
-    const { data } = await axiosInstance.get("dashboard/donor-data");
-    return data;
-};
 const fetchTopDonor = async () => {
   const axiosInstance = createAxiosInstance();
   const { data } = await axiosInstance.get("dashboard/top-donors");
+  console.log("this is top donor",data);
   return data;
 };
 
-
-const fetchProgramData = async () => {
-    const axiosInstance = createAxiosInstance();
-    const { data } = await axiosInstance.get("dashboard/total-program-count");
-    return data;
-};
 const fetchDonationData = async () => {
   const axiosInstance = createAxiosInstance();
-  const { data } = await axiosInstance.get("donation/donation-data");
+  const { data } = await axiosInstance.get("dashboard/donation-data");
   console.log("this is donation data",data);
   return data;
 };
+
+// const fetchLogin = async () => {
+//   const axiosInstance = createAxiosInstance();
+//   const { data } = await axiosInstance.post("dashboard/login");
+//   return data;
+// };
 const useDonationData = () => {
   return useQuery({
     queryKey: ['donationData'],
@@ -41,25 +38,7 @@ const useDonationData = () => {
   });
 };
 
-const useProgramData = () => {
-    return useQuery({
-      queryKey: ['programData'],
-      queryFn: fetchProgramData,
-      staleTime: 5 * 60 * 1000, // Consider data fresh for 5 minutes
-      refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
-    });
-  };
-
-
-const useDonorData = () => {
-    return useQuery({
-      queryKey: ['donorData'],
-      queryFn: fetchDonorData,
-      staleTime: 5 * 60 * 1000, // Consider data fresh for 5 minutes
-      refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
-    });
-  };
-  const useTopDonor = () => {
+const useTopDonor = () => {
     return useQuery({
       queryKey: ['topDonorData'],
       queryFn: fetchTopDonor,
@@ -77,4 +56,4 @@ const useDashboardData = () => {
     });
 };
 
-export  {useDashboardData, useDonorData,useProgramData ,useTopDonor ,useDonationData};
+export  {useDashboardData,useTopDonor ,useDonationData };
