@@ -30,7 +30,7 @@ const DonationReport = () => {
 
     const csvData = filteredData.map((row) => [
       formatDate(row.donation_date),
-      row.donor_id,
+      row.donation_id,
       row.donor_name,
       row.category,
       row.donation_amount,
@@ -67,7 +67,7 @@ const DonationReport = () => {
 
   const columns = [
     { key: "donation_date", label: "Date", type: "date" },
-    { key: "donor_id", label: "Donation ID", type: "text" },
+    { key: "donation_id", label: "Donation ID", type: "text" },
     { key: "donor_name", label: "Donor Name", type: "text" },
     {
       key: "category",
@@ -253,7 +253,7 @@ const DonationReport = () => {
                   key={index}
                   className="hover:bg-[#F5E6D3]/20 transition-colors duration-200"
                 >
-                  <td className="p-4">{formatDate(donation.donation_date)}</td>
+                  <td className="p-4">{donation.donation_date}</td>
                   <td className="p-4">D0{donation.donation_id || "N/A"}</td>
                   <td className="p-4">{donation.donor_name || "Anonymous"}</td>
                   <td className="p-4">

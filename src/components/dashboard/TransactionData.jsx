@@ -1,36 +1,46 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import SingleTransactionRow from "./SingleTransactionRow";
+
+
+
 const TransactionData = ({ transactions }) => {
   return (
-    <section className="m-[-20px] p-2 pt-10">
-      <div className="flex items-center justify-between mb-1 pb-8">
-        <h2 className="md:text-[28px] text-xl font-bold text-gray-800 align-middle">
+    <section className="w-full py-2 ">
+      <div className="flex flex-wrap items-center justify-between mb-4">
+        <h2 className="text-xl md:text-[28px] font-bold text-gray-800">
           Last Transaction
         </h2>
-        <a href="/report/donation">
+        <Link to="/report/donation" className="mt-2 md:mt-0">
           <button className="px-4 py-2 bg-[#02343F] text-[12px] md:text-[16px] text-white rounded-lg hover:bg-[#034c5c]">
             View Donation Report
           </button>
-        </a>
+        </Link>
       </div>
-
-      <thead className=" sticky top-0 bg-[#02343F] text-white  rounded-t-md grid grid-cols-4 gap-4 text-center w-full pr-4 text-sm md:text-lg">
-        <th className="p-4 font-semibold flex justify-start">Category</th>
-        <th className="p-4 font-semibold">Donation Date</th>
-        <th className="p-4 font-semibold">Program Name</th>
-        <th className="p-4 font-semibold flex justify-end">Donation Amount</th>
-      </thead>
-      <div className="bg-white p-5 rounded-xl">
-        <div
-          className=" overflow-auto overflow-x-scroll rounded-md "
-          style={{
-            maxHeight: "70vh",
-            scrollbarWidth: "thin",
-            scrollbarColor: "#004D40 white",
-          }}
-        >
-          {transactions.slice(0,10).map((transaction, index) => (
-            <SingleTransactionRow key={index} {...transaction} />
-          ))}
+      
+      <div className="w-full" >
+        <div className="min-w-[600px] rounded-md">
+          {/* Header */}
+          <div className="grid grid-cols-4 gap-4 bg-[#02343F] text-white rounded-t-md p-3 text-sm md:text-lg sticky top-0">
+            <div className="text-left">Category</div>
+            <div className="text-center">Donation Date</div>
+            <div className="text-center">Program Name</div>
+            <div className="text-right">Donation Amount</div>
+          </div>
+          
+          {/* Transactions */}
+          <div className="bg-white overflow-x-auto h-80" style={{
+          maxHeight: '70vh',
+          scrollbarWidth: 'thin',
+          scrollbarColor: '#004D40 white'
+        }}>
+            {transactions.slice(0,10).map((transaction, index) => (
+              <SingleTransactionRow 
+                key={transaction.id || index} 
+                {...transaction} 
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

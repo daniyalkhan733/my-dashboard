@@ -12,7 +12,6 @@ const DashboardDetails = () => {
     isError: isDashboardError,
     error: dashboardError,
   } = useDashboardData();
-  console.log(dashboardData);
 
 
   const {
@@ -101,22 +100,22 @@ const DashboardDetails = () => {
 
       {/* CardTwo and Data Section */}
       <div className="flex flex-col md:flex-row py-6 space-y-6 md:space-y-0 md:space-x-6">
-        <div className="p-4 md:p-6 rounded-lg w-full md:w-3/4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 m-[-15px]">
+        <div className="p-2 rounded-lg w-full md:w-3/4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 ">
             <CardTwo
               title="Total Donation"
               value={`£ ${dashboardData?.total_donations || '0'}`}
-              description={`+ £${dashboardData?.count_last_donation_data || '+0'} From Last Month`}
+              description={`+  £ ${dashboardData?.new_donation || '+0'} From Last Month`}
             />
             <CardTwo
               title="Total Donors"
-              value={'0'}
-              description={`+${dashboardData?.count_last_donor_data || '0'} New Donors`}
+              value={dashboardData?.total_donors || '0'}
+              description={`+${dashboardData?.new_donor || '0'} New Donors`}
             />
             <CardTwo
               title="Active Campaign"
               value={dashboardData?.total_programs || '0'}
-              description={`+${dashboardData?.count_last_program_data || '0'} New Campaign`}
+              description={`+${dashboardData?.new_program || '0'} New Campaign`}
             />
           </div>
           <TransactionData transactions={donationData || []} />

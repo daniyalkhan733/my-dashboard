@@ -8,7 +8,6 @@ const useEncryptedClientData = () => {
 
   useEffect(() => {
     const encryptedClientData = localStorage.getItem('encryptedClientData');
-    console.log("Encrypted Client Data:", encryptedClientData);
 
     if (encryptedClientData) {
       const decryptedClientData = decryptClientData(encryptedClientData);

@@ -1,21 +1,20 @@
 const SingleTransactionRow = ({ category, donation_date, program_name, donation_amount }) => {
-    return (
-    <>
-      <div className="grid grid-cols-4 gap-4 text-center w-96 md:w-full pr-4">
-        <div className="flex items-center pb-2 rounded text-[18px] align-middle text-[#1E293B] font-semibold">
-          {category}
-        </div>
-        <div className="flex items-center justify-center rounded text-[16px] align-middle text-[#64748B]">
-          {donation_date}
-        </div>
-        <div className="flex items-center justify-center rounded text-[16px] align-middle text-[#64748B]">
-          {program_name}
-        </div>
-        <div className="flex justify-end items-center pb-2 rounded text-[18px] text-[#1E293B] font-semibold">
-          {`£ ${donation_amount}`}
-        </div>
+  return (
+    <div className="grid grid-cols-4 gap-4 text-center w-full px-4 py-2">
+      <div className="flex items-center justify-start text-[16px] text-[#1E293B] font-semibold truncate">
+        {category}
       </div>
-      <hr className="mt-1 mb-8 border-[#D2D2D2]" />
-    </>
-  )};
-  export default SingleTransactionRow;
+      <div className="flex items-center justify-center text-[14px] text-[#64748B] truncate">
+        {donation_date}
+      </div>
+      <div className="flex items-center justify-center text-[14px] text-[#64748B] truncate">
+        {program_name}
+      </div>
+      <div className="flex justify-end items-center text-[16px] text-[#1E293B] font-semibold">
+        {`£ ${donation_amount}`}
+      </div>
+      <hr className="col-span-4 my-2 border-[#D2D2D2]" />
+    </div>
+  );
+};
+export default SingleTransactionRow;

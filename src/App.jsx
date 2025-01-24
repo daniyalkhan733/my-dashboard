@@ -56,7 +56,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/report/donation" element={<DonationReport />} />
             <Route path="/login" element={<Login />} />
-            <Route path="*" element={<Navigate to="/dashboard" />} />
+            {/* <Route path="*" element={<Navigate to="/dashboard" />} /> */}
           </Routes>
         </LayoutProvider>
       </Router>
