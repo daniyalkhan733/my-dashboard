@@ -51,7 +51,7 @@ const Header = ({ charityName }) => {
             >
               <div className="py-1">
                 <div className="px-4 py-2 text-sm text-gray-900">
-                  <p className="font-bold">Moin Khan</p>
+                  <p className="font-bold">Daniyal Khan</p>
                   <p className="text-gray-500">Administrator</p>
                 </div>
 

@@ -13,7 +13,7 @@ const TransactionData = ({ transactions }) => {
         </a>
       </div>
 
-      <thead className="sticky top-0 bg-[#02343F] text-white  rounded-t-md grid grid-cols-4 gap-4 text-center w-full pr-4 text-sm md:text-lg">
+      <thead className=" sticky top-0 bg-[#02343F] text-white  rounded-t-md grid grid-cols-4 gap-4 text-center w-full pr-4 text-sm md:text-lg">
         <th className="p-4 font-semibold flex justify-start">Category</th>
         <th className="p-4 font-semibold">Donation Date</th>
         <th className="p-4 font-semibold">Program Name</th>

@@ -2,10 +2,10 @@ import SingleDonor from "./SingleDonor";
 const DonorTable = ({donors}) => {
     return (
     <div
-      className="bg-white md:py-6 md:pl-6 p-2 rounded-lg shadow-lg w-full h-[35rem] md:w-1/4"
+      className="bg-white md:pb-6 md:pl-6  rounded-lg shadow-lg w-full h-[35rem] md:w-1/4"
       style={{ marginTop: "8px" }}
     >
-      <h2 className="text-xl font-bold text-gray-800 mb-4">Top Donors</h2>
+      <h2 className="text-xl font-bold text-white bg-primary mb-4 md:ml-[-24px] py-1 rounded-t-md text-center">Top Donors</h2>
       <div className="flex flex-col space-y-4">
         <div className="h-[30rem] overflow-auto overflow-x-scroll pr-4 rounded-md"
          style={{
