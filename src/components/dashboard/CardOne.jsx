@@ -6,7 +6,7 @@ const CardOne = ({ title, value, description, src, textColor }) => {
     >
       <h2 className="text-xl font-bold mb-2">{title}</h2>
       <p className="text-3xl mb-4 font-bold">{value}</p>
-      <p className="text-[#64748B] font-semibold">{description}</p>
+      <p className=" font-semibold">{description}</p>
     </div>
   )};
 

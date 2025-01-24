@@ -110,17 +110,17 @@ const {
             <CardTwo
               title="Total Donation"
               value={`£ ${dashboardData?.total_donations || '0'}`}
-              description={`+ £${dashboardData?.count_last_donation_data || '+0'} From Last Month`}
+              description={`+ £${dashboardData?.new_donation || '+0'} From Last Month`}
             />
             <CardTwo
               title="Total Donors"
               value={dashboardData?.total_donors || '0'}
-              description={`+${dashboardData?.count_last_donor_data || '0'} New Donors`}
+              description={`+${dashboardData?.new_donor || '0'} New Donors`}
             />
             <CardTwo
               title="Active Campaign"
               value={dashboardData?.total_programs || '0'}
-              description={`+${dashboardData?.count_last_program_data || '0'} New Campaign`}
+              description={`+${dashboardData?.new_program || '0'} New Campaign`}
             />
           </div>
           <TransactionData transactions={donationData || []} />

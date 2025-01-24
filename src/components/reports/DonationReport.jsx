@@ -117,7 +117,7 @@ const DonationReport = () => {
       <div className="w-full rounded-lg shadow-sm border border-primary/80">
         <button
           onClick={() => setIsFilterOpen(!isFilterOpen)}
-          className="w-full px-6 py-4 flex justify-between items-center bg-white hover:bg-[#F5E6D3]/10 transition-colors rounded-lg"
+          className="w-full px-6 py-4 flex justify-between items-center bg-white hover:bg-primary/10 transition-colors rounded-lg"
         >
           <div className="flex items-center space-x-2">
             <span className="font-semibold text-[#02343F]">Filter Donations</span>
@@ -237,7 +237,7 @@ const DonationReport = () => {
         {filteredData.length === 0 ? (
           <NoDonationsFound setFilters={setFilters} />
         ) : (
-          <table className="w-full text-left">
+          <table className="w-full text-left ">
             <thead className="sticky top-0 bg-[#02343F] text-white">
               <tr>
                 {columns.map(({ key, label }) => (
@@ -252,9 +252,9 @@ const DonationReport = () => {
               {filteredData.map((donation, index) => (
                 <tr
                   key={index}
-                  className="hover:bg-[#F5E6D3]/20 transition-colors duration-200"
+                  className="hover:bg-primary/10 transition-colors duration-200"
                 >
-                  <td className="p-4">{formatDate(donation.donation_date)}</td>
+                  <td className="p-4">{donation.donation_date}</td>
                   <td className="p-4">D0{donation.donation_id || "N/A"}</td>
                   <td className="p-4">{donation.donor_name || "Anonymous"}</td>
                   <td className="p-4">
