@@ -14,6 +14,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DashboardLayout from "./layout/dashboard-layout";
 import Login from "./pages/login";
 import useEncryptedClientData from "./utils/getClient";
+import ScrollToTop from "./components/ScrollToTop";
 
 // LayoutProvider handles authentication and layout decisions
 const LayoutProvider = ({ children }) => {
@@ -47,6 +48,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
+      <ScrollToTop/>
+
         <LayoutProvider>
           <Routes>
             <Route path="/" element={<Navigate to="/dashboard" />} />
