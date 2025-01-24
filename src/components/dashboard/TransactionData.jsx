@@ -18,7 +18,7 @@ const TransactionData = ({ transactions }) => {
         </Link>
       </div>
       
-      <div className="w-full" >
+      <div className="w-full overflow-x-auto" >
         <div className="min-w-[600px] rounded-md">
           {/* Header */}
           <div className="grid grid-cols-4 gap-4 bg-[#02343F] text-white rounded-t-md p-3 text-sm md:text-lg sticky top-0">

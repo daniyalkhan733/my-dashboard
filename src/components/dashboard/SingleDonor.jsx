@@ -1,21 +1,22 @@
 const SingleDonor = ({ item }) => {
-
   return (
-    <>
-    <div className="flex justify-between items-center py-2">
-      <div>
-        <p className="text-[14px] font-semibold text-[#0F172A] truncate max-w-[100px]">
-          {item.first_name + " " + item.last_name}
-        </p>
-
-        <p className="text-[12px] text-[#64748B]">{item.last_donated_date}</p>
-      </div>
-      <div className="bg-[#F1F5F9] px-4 py-1 rounded-full">
-        <span className="text-[14px] font-semibold text-[#0F172A]">£ {item.total_donation_amount}</span>
+    <div className="border-b border-gray-200 last:border-b-0">
+      <div className="flex justify-between items-center py-3 px-2">
+        <div className="flex-grow pr-4">
+          <p className="text-sm font-semibold text-gray-900 truncate">
+            {`${item.first_name} ${item.last_name}`.trim()}
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            Last Donated: {item.last_donated_date}
+          </p>
+        </div>
+        <div className="bg-gray-100 px-3 py-1 rounded-full">
+          <span className="text-sm font-semibold text-gray-900">
+            £{item.total_donation_amount.toLocaleString()}
+          </span>
+        </div>
       </div>
     </div>
-          <hr className="my-1 border-[#D2D2D2]" />
-          </>
-  )
+  );
 };
 export default SingleDonor;
