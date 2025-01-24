@@ -30,7 +30,7 @@ const DonationReport = () => {
 
     const csvData = filteredData.map((row) => [
       formatDate(row.donation_date),
-      row.donation_id,
+      row.donor_id,
       row.donor_name,
       row.category,
       row.donation_amount,
@@ -67,7 +67,7 @@ const DonationReport = () => {
 
   const columns = [
     { key: "donation_date", label: "Date", type: "date" },
-    { key: "donation_id", label: "Donation ID", type: "text", placeholder :"Search by ID" },
+    { key: "donor_id", label: "Donation ID", type: "text" },
     { key: "donor_name", label: "Donor Name", type: "text" },
     {
       key: "category",
@@ -117,10 +117,10 @@ const DonationReport = () => {
       <div className="w-full rounded-lg shadow-sm border border-primary/80">
         <button
           onClick={() => setIsFilterOpen(!isFilterOpen)}
-          className="w-full px-6 py-4 flex justify-between items-center bg-white hover:bg-primary/10 transition-colors rounded-lg"
+          className="w-full px-6 py-4 flex justify-between items-center bg-white transition-colors rounded-lg"
         >
           <div className="flex items-center space-x-2">
-            <span className="font-semibold text-[#02343F]">Filter Donations</span>
+            <span className="font-semibold text-[#02343F]">Filters</span>
             {Object.keys(filters).length > 0 && (
               <span className="bg-[#02343F] text-white px-2 py-0.5 rounded-full text-sm">
                 {Object.keys(filters).length}
@@ -134,7 +134,7 @@ const DonationReport = () => {
           )}
         </button>
         {isFilterOpen && (
-          <div className="px-6 py-4 border-t border-primary/50">
+          <div className="px-6 py-4 border-t border-[#F5E6D3] bg-white">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
               {columns.map(({ key, label, type, options }) => (
                 <div key={key} className="space-y-2">
@@ -174,10 +174,9 @@ const DonationReport = () => {
                       type="text"
                       value={filters[key] || ""}
                       onChange={(e) => handleFilterChange(key, e.target.value)}
-                      placeholder={key === "donation_id" ? "Search by ID" : "Search by donor name"}
+                      placeholder={`Filter `}
                       className="w-full p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
                     />
-                    
                   )}
                 </div>
               ))}
@@ -237,7 +236,7 @@ const DonationReport = () => {
         {filteredData.length === 0 ? (
           <NoDonationsFound setFilters={setFilters} />
         ) : (
-          <table className="w-full text-left ">
+          <table className="w-full text-left">
             <thead className="sticky top-0 bg-[#02343F] text-white">
               <tr>
                 {columns.map(({ key, label }) => (
@@ -252,9 +251,9 @@ const DonationReport = () => {
               {filteredData.map((donation, index) => (
                 <tr
                   key={index}
-                  className="hover:bg-primary/10 transition-colors duration-200"
+                  className="hover:bg-[#F5E6D3]/20 transition-colors duration-200"
                 >
-                  <td className="p-4">{donation.donation_date}</td>
+                  <td className="p-4">{formatDate(donation.donation_date)}</td>
                   <td className="p-4">D0{donation.donation_id || "N/A"}</td>
                   <td className="p-4">{donation.donor_name || "Anonymous"}</td>
                   <td className="p-4">

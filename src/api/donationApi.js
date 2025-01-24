@@ -38,7 +38,17 @@ const useDonationData = () => {
   });
 };
 
-const useTopDonor = () => {
+const useProgramData = () => {
+    return useQuery({
+      queryKey: ['programData'],
+      queryFn: fetchProgramData,
+      staleTime: 5 * 60 * 1000, // Consider data fresh for 5 minutes
+      refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
+    });
+  };
+
+
+  const useTopDonor = () => {
     return useQuery({
       queryKey: ['topDonorData'],
       queryFn: fetchTopDonor,
@@ -56,4 +66,4 @@ const useDashboardData = () => {
     });
 };
 
-export  {useDashboardData,useTopDonor ,useDonationData };
+export  {useDashboardData,useProgramData ,useTopDonor ,useDonationData};

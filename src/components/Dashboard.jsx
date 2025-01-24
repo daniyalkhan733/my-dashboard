@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDashboardData, useTopDonor ,useDonationData} from '../api/donationApi';
+import { useDashboardData, useDonationData, useProgramData , useTopDonor} from '../api/donationApi';
 import CardOne from './dashboard/CardOne';
 import CardTwo from './dashboard/CardTwo';
 import DonorTable from './dashboard/DonorTable';
@@ -14,16 +14,6 @@ const DashboardDetails = () => {
   } = useDashboardData();
   console.log(dashboardData);
 
-const {
-    data: donationData,
-    isLoading: isDonationLoading,
-    isError: isDonationError,
-    error: donationError,
-  } = useDonationData();
-  console.log("this is donation data",donationData);
-  if (isDonationError) {
-    return <div className="text-red-500">{donationError.message}</div>;
-  }
 
   const {
     data: topDonor,
@@ -31,7 +21,13 @@ const {
     isError: isDonorError,
     error: donorError,
   } = useTopDonor();
-  console.log(topDonor);
+
+  const {
+    data: donationData,
+    isLoading: isDonationLoading,
+    isError: isDonationError,
+    error: donationError,
+  } = useDonationData();
 
   
 
@@ -110,17 +106,17 @@ const {
             <CardTwo
               title="Total Donation"
               value={`£ ${dashboardData?.total_donations || '0'}`}
-              description={`+ £${dashboardData?.new_donation || '+0'} From Last Month`}
+              description={`+ £${dashboardData?.count_last_donation_data || '+0'} From Last Month`}
             />
             <CardTwo
               title="Total Donors"
-              value={dashboardData?.total_donors || '0'}
-              description={`+${dashboardData?.new_donor || '0'} New Donors`}
+              value={'0'}
+              description={`+${dashboardData?.count_last_donor_data || '0'} New Donors`}
             />
             <CardTwo
               title="Active Campaign"
               value={dashboardData?.total_programs || '0'}
-              description={`+${dashboardData?.new_program || '0'} New Campaign`}
+              description={`+${dashboardData?.count_last_program_data || '0'} New Campaign`}
             />
           </div>
           <TransactionData transactions={donationData || []} />
