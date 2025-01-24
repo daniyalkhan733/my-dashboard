@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDashboardData, useProgramData , useTopDonor} from '../api/donationApi';
+import { useDashboardData, useDonationData, useProgramData , useTopDonor} from '../api/donationApi';
 import CardOne from './dashboard/CardOne';
 import CardTwo from './dashboard/CardTwo';
 import DonorTable from './dashboard/DonorTable';
@@ -21,7 +21,13 @@ const DashboardDetails = () => {
     isError: isDonorError,
     error: donorError,
   } = useTopDonor();
-  console.log(topDonor);
+
+  const {
+    data: donationData,
+    isLoading: isDonationLoading,
+    isError: isDonationError,
+    error: donationError,
+  } = useDonationData();
 
   
 
