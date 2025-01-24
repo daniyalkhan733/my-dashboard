@@ -12,19 +12,21 @@ const Sidebar = () => {
     const path = location.pathname;
     if (path.includes("/invoice")) {
       setActiveItem("invoice");
+      setIsSidebarOpen(!isSidebarOpen);
     } else if (path.includes("/report")) {
       setActiveItem("report");
+      setIsSidebarOpen(!isSidebarOpen);
     } else if (path.includes("/contact")) {
       setActiveItem("contact");
+      setIsSidebarOpen(!isSidebarOpen);
     } else if (path.includes("/dashboard")) {
       setActiveItem("dashboard");
+      setIsSidebarOpen(!isSidebarOpen);
     }
   }, [location]);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
-    document.documentElement.style.overflow = !isSidebarOpen ? "hidden" : "";
-    document.body.style.overflow = !isSidebarOpen ? "hidden" : "";
   };
 
   const navigationItems = [
