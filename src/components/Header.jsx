@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { User } from 'lucide-react';
+import { User,LogOut } from 'lucide-react';
 
 const Header = ({ charityName }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -53,6 +53,7 @@ const Header = ({ charityName }) => {
                  <User className="pr-1"/>
                   Profile
                 </Link>
+                <p className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 select-none" onClick={() => {localStorage.clear(); window.location.reload();}}><LogOut className="pr-1" /> Logout</p>
               </div>
             </div>
           </div>
