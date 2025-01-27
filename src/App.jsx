@@ -15,6 +15,7 @@ import DashboardLayout from "./layout/dashboard-layout";
 import Login from "./pages/login";
 import useEncryptedClientData from "./utils/getClient";
 import ScrollToTop from "./components/ScrollToTop";
+import { Toaster } from "react-hot-toast";
 
 // LayoutProvider handles authentication and layout decisions
 const LayoutProvider = ({ children }) => {
@@ -49,7 +50,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
       <ScrollToTop/>
-
+      <Toaster /> 
         <LayoutProvider>
           <Routes>
             <Route path="/" element={<Navigate to="/dashboard" />} />

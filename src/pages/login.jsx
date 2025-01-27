@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import { useLoginMutation } from '../api/authenticationApi';
 import useEncryptedClientData from '../utils/getClient';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -22,9 +23,11 @@ const Login = () => {
             user_email: email,
             user_password: password
         };
+        toast('Logging in...')
         mutate(loginData, {
             onSuccess: (response) => {
                 console.log(response);
+                toast.success('Login successful');
                 setEncryptedClientData({
                     clientId: response.donor.user_id,
                     clientEmail: response.donor.user_email,
