@@ -16,15 +16,18 @@ import Login from "./pages/login";
 import useEncryptedClientData from "./utils/getClient";
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
+import ForgotPassword from "./pages/forgotPassword";
+import ResetPassword from "./pages/resetPassword";
 
 // LayoutProvider handles authentication and layout decisions
 const LayoutProvider = ({ children }) => {
   const location = useLocation();
   const [clientData] = useEncryptedClientData();
 
-  const isLoginPage = location.pathname === "/login";
+  const isLoginPage = location.pathname === "/login" || location.pathname === "/forgot-password" || location.pathname === "/reset-password";
   const isAuthenticated = !!clientData?.clientId;
-
+  console.log("clientData", clientData);
+  
   // Redirect unauthenticated users to the login page
   if (!isAuthenticated && !isLoginPage) {
     return <Navigate to="/login" replace />;
@@ -49,8 +52,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-      <ScrollToTop/>
-      <Toaster /> 
+        <ScrollToTop />
+        <Toaster />
         <LayoutProvider>
           <Routes>
             <Route path="/" element={<Navigate to="/dashboard" />} />
@@ -60,6 +63,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/report/donation" element={<DonationReport />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
             {/* <Route path="*" element={<Navigate to="/dashboard" />} /> */}
           </Routes>
         </LayoutProvider>

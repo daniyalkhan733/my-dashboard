@@ -3,6 +3,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import { useLoginMutation } from '../api/authenticationApi';
 import useEncryptedClientData from '../utils/getClient';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -107,12 +108,12 @@ const Login = () => {
                     </div>
 
                     <div className="text-center">
-                        <a
-                            href="#"
+                        <Link
+                            to={"/forgot-password"}
                             className="font-medium text-blue-500 hover:text-blue-600 transition-colors duration-200 ease-in-out"
                         >
                             Forgot Password?
-                        </a>
+                        </Link>
                     </div>
 
                 </form>
