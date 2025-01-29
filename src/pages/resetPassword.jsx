@@ -21,13 +21,11 @@ const ResetPassword = () => {
 
     // Function to decrypt email
     const decryptEmail = (encryptedEmail) => {
-        console.log(encryptedEmail, "samad2");
 
         try {
             const bytes = CryptoJS.AES.decrypt(encryptedEmail, encryptionKey);
             return bytes.toString(CryptoJS.enc.Utf8);
         } catch (error) {
-            console.error('Invalid encrypted email:', error);
             return null;
         }
     };
@@ -39,9 +37,6 @@ const ResetPassword = () => {
     };
 
     const email = decryptEmail(token);
-
-    console.log(email, "samad");
-
 
     // useEffect(() => {
     //     // Redirect to login if email is invalid

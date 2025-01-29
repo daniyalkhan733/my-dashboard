@@ -80,7 +80,6 @@ const ContactForm = () => {
         details: ''
       });
     } catch (error) {
-      console.error('Error sending inquiry:', error);
       alert('Error sending inquiry. Please try again later.');
     } finally {
       setIsSubmitting(false);

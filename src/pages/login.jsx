@@ -15,7 +15,6 @@ const Login = () => {
     const { mutate, isLoading, error } = useLoginMutation();
     const [clientData, setEncryptedClientData] = useEncryptedClientData()
 
-    console.log(clientData);
 
 
     const handleSubmit = (event) => {
@@ -27,7 +26,6 @@ const Login = () => {
         toast('Logging in...')
         mutate(loginData, {
             onSuccess: (response) => {
-                console.log(response);
                 toast.success('Login successful');
                 setEncryptedClientData({
                     clientId: response.donor.user_id,

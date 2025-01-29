@@ -11,7 +11,6 @@ const ForgotPassword = () => {
 
     // Encryption key - keep this secure and consistent on both client and server
     const encryptionKey = import.meta.env.VITE_CRYPTO_SECRET;
-    console.log(window.location.origin);
 
     const handleSubmit = (event) => {
         event.preventDefault();

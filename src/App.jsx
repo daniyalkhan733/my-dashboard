@@ -26,7 +26,6 @@ const LayoutProvider = ({ children }) => {
 
   const isLoginPage = location.pathname === "/login" || location.pathname === "/forgot-password" || location.pathname === "/reset-password";
   const isAuthenticated = !!clientData?.clientId;
-  console.log("clientData", clientData);
   
   // Redirect unauthenticated users to the login page
   if (!isAuthenticated && !isLoginPage) {

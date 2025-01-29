@@ -15,7 +15,6 @@ const useEncryptedClientData = () => {
         setClientData(JSON.parse(decryptedClientData));
       } else {
         localStorage.removeItem('encryptedClientData');
-        console.warn("Corrupted encrypted data removed from localStorage.");
       }
     }
   }, []);
@@ -27,9 +26,7 @@ const useEncryptedClientData = () => {
   };
 
   const encryptClientData = (clientData) => {
-    console.log("Encrypting data...");
     const encrypted = CryptoJS.AES.encrypt(clientData, key).toString();
-    console.log("Encrypted Data:", encrypted);
     return encrypted;
   };
 
@@ -44,7 +41,6 @@ const useEncryptedClientData = () => {
 
       return decrypted;
     } catch (error) {
-      console.error("Decryption error:", error);
       return null;
     }
   };

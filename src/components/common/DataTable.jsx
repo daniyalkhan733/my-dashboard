@@ -16,7 +16,6 @@ const DataTable = ({ columns, data, onSelectRow }) => {
           {/* Table Body */}
           <tbody>
             {data.map((row, rowIndex) => {
-                console.log(row);
                 
                 return(
               <tr key={rowIndex} className="border-b hover:bg-gray-50">
@@ -33,7 +32,6 @@ const DataTable = ({ columns, data, onSelectRow }) => {
                       </td>
                     );
                   }
-                  console.log(column.render ? column.render("",row.id):null);
                   
                   // Default rendering
                   return (

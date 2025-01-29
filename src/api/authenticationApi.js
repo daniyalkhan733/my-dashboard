@@ -5,12 +5,9 @@ import axios from 'axios';
 
 const handleLogin = async (data) => {
     const axiosInstance = createAxiosInstance();
-    console.log(data,"djlsnc");
     
     const res = await axiosInstance.post("dashboard/login",data);
-    console.log(res,"ilusbvlibufviludfbvliduhbliu");
     
-    console.log("this is eugjb", data);
     return res.data;
 };
 
@@ -23,10 +20,8 @@ const handleForgotPassword = async (data) => {
             params: data,
         });
         
-        console.log("Response:", res);
         return res.data;
     } catch (error) {
-        console.error("Error in forgot password request:", error);
         throw error; // Rethrow the error for further handling
     }
 };
@@ -40,10 +35,8 @@ const handleResetPassword = async (data) => {
             params: data,
         });
         
-        console.log("Response:", res);
         return res.data;
     } catch (error) {
-        console.error("Error in forgot password request:", error);
         throw error; // Rethrow the error for further handling
     }
 };
