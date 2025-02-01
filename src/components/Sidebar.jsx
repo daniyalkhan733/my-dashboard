@@ -61,14 +61,14 @@ const Sidebar = () => {
       <div
         className={`${
           isSidebarOpen ? "block" : "hidden"
-        } md:block sm:w-64 bg-black text-white shadow-lg h-screen w-60 fixed z-50`}
+        } md:block sm:w-64 bg-black text-white shadow-lg h-screen w-60 fixed z-50 select-none`}
       >
         <div className="flex justify-center pt-8 pb-3 px-2">
           <Link to="/">
             <img
               src="/assets/images/logo-sidebar.png"
               alt="Logo"
-              className="h-full"
+              className="h-full select-none"
             />
           </Link>
         </div>
