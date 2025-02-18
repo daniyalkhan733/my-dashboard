@@ -171,13 +171,13 @@ const InvoiceTable = () => {
                     </td>
                     <td className="px-6 py-4 ">
                       <button
-                        onClick={() => {
-                          if (isRowExpand == row) {
-                            setIsRowExpand("");
-                          } else {
-                            setIsRowExpand(row);
-                          }
-                        }}
+                        // onClick={() => {
+                        //   if (isRowExpand == row) {
+                        //     setIsRowExpand("");
+                        //   } else {
+                        //     setIsRowExpand(row);
+                        //   }
+                        // }}
                         className="text-[#02343F] transition-all duration-300"
                       >
                         {isRowExpand === row ? (
