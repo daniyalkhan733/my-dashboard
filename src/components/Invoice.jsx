@@ -143,6 +143,7 @@ const InvoiceTable = () => {
                     }}
                     className="border-b hover:bg-gray-50 transition-all duration-300"
                   >
+                    {/* empty */}
                     {/* <td className="p-4 text-center">{rowIndex + 1}</td> */}
                     <td className="px-6 py-4 font-medium text-gray-900">
                       {row.invoice_id}
