@@ -118,7 +118,7 @@ const InvoiceTable = () => {
 
           {/* Table Body */}
           <tbody>
-            {invoiceData.reverse().map((row, rowIndex) => {
+            {invoiceData.map((row, rowIndex) => {
               // const amount = invoiceData[row].reduce((acc, curr) => {
               //   // Remove commas and parse the total_donation_amount to a float
               //   return acc + parseFloat(curr.total_donation_amount.replace(/,/g, ''));
