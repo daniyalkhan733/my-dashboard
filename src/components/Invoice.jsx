@@ -1,5 +1,5 @@
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
-import { Download } from "lucide-react";
+import { Download } from 'lucide-react';
 // InvoiceTable.jsx
 import React, { useState } from "react";
 import InvoiceFilterAccordion from "./common/InvoiceFilter";
@@ -162,11 +162,10 @@ const InvoiceTable = () => {
                     </td>
                     <td className="px-6 py-4 font-medium">
                       <span
-                        className={`px-2 py-1 text-xs font-medium ${
-                          row.status == "pending"
+                        className={`px-2 py-1 text-xs font-medium ${row.status == "pending"
                             ? "text-yellow-600 bg-yellow-100"
                             : "text-green-600 bg-green-100"
-                        } bg-green-100 rounded-full`}
+                          } bg-green-100 rounded-full`}
                       >
                         {row.status}
                       </span>
@@ -203,11 +202,9 @@ const InvoiceTable = () => {
                         >
                           {({ loading }) => (
                             <button className="text-[#02343F] bg-[#02343F]/7 shadow-[#02343F]/7 shadow-lg p-3 rounded-lg hover:text-[#02343F]*3 transition-all duration-300 text-xs  flex justify-center items-center">
-                              {loading ? (
-                                ""
-                              ) : (
-                                <Download className="w-5 h-5 transition-transform group-hover:scale-110 animate-bounce " />
-                              )}
+                              {loading ? "" : <Download 
+        className="w-5 h-5 transition-transform group-hover:scale-110 animate-bounce " 
+      />}
                               {loading ? "Loading..." : "Download PDF"}
                             </button>
                           )}
@@ -227,32 +224,30 @@ const InvoiceTable = () => {
                   </tr>
                   {isRowExpand === row && (
                     <tr className="transition-all duration-500 ease-in-out">
-                      <td colSpan={9}>
-                        {row?.donation && row.donation.length > 0 ? (
-                          <table className="w-full text-sm text-left border-t-2">
-                            <thead className="bg-gray-100 text-gray-700 uppercase text-xs">
-                              <tr>
-                                <th className="px-4 py-2 font-medium text-gray-700">
-                                  Donation Id
-                                </th>
-                                <th className="px-4 py-2 font-medium text-gray-700">
-                                  Donor Name
-                                </th>
-                                <th className="px-4 py-2 font-medium text-gray-700">
-                                  Program Name
-                                </th>
-                                <th className="px-4 py-2 font-medium text-gray-700">
-                                  Program Country
-                                </th>
-                                <th className="px-4 py-2 font-medium text-gray-700">
-                                  Total Donation Amount
-                                </th>
-                              </tr>
-                            </thead>
-
-                            {/* dummy */}
-                            <tbody>
-                              {row?.donation.map((invoice, index) => (
+                      <td colSpan={9} className="">
+                        <table className="w-full text-sm text-left border-t-2">
+                          <thead className="bg-gray-100 text-gray-700 uppercase text-xs">
+                            <tr>
+                              <th className="px-4 py-2 font-medium text-gray-700">
+                                Donation Id
+                              </th>
+                              <th className="px-4 py-2 font-medium text-gray-700">
+                                Donor Name
+                              </th>
+                              <th className="px-4 py-2 font-medium text-gray-700">
+                                Program Name
+                              </th>
+                              <th className="px-4 py-2 font-medium text-gray-700">
+                                Program Country
+                              </th>
+                              <th className="px-4 py-2 font-medium text-gray-700">
+                                Total Donation Amount
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {row?.donation?.map((invoice, index) => {
+                              return (
                                 <tr
                                   key={index}
                                   className="border-b hover:bg-gray-50 transition-all duration-300"
@@ -272,15 +267,12 @@ const InvoiceTable = () => {
                                   <td className="px-4 py-2">
                                     {invoice.donation_amount}
                                   </td>
+                                  {/* <td className="px-4 py-2">{invoice.total_donation_amount}</td> */}
                                 </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        ) : (
-                          <p className="text-center text-white bg-red-300 py-4 px-6 rounded-md shadow-md font-semibold">
-                            There is no donation in this invoice.
-                          </p>
-                        )}
+                              );
+                            })}
+                          </tbody>
+                        </table>
                       </td>
                     </tr>
                   )}
