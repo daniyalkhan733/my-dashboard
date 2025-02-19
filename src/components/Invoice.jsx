@@ -94,7 +94,7 @@ const InvoiceTable = () => {
     isError: isInvoiceError,
     error: invoiceError,
   } = useInvoiceData();
-  const reversedInvoiceData = invoiceData?.reverse();
+
   if (isInvoiceLoading) {
     return <Loader />;
   }
@@ -118,7 +118,7 @@ const InvoiceTable = () => {
 
           {/* Table Body */}
           <tbody>
-            {reversedInvoiceData.map((row, rowIndex) => {
+            {invoiceData.map((row, rowIndex) => {
               // const amount = invoiceData[row].reduce((acc, curr) => {
               //   // Remove commas and parse the total_donation_amount to a float
               //   return acc + parseFloat(curr.total_donation_amount.replace(/,/g, ''));
@@ -205,10 +205,11 @@ const InvoiceTable = () => {
                       {/* Show the "Generate PDF" button only if the PDF is not yet generated */}
                       {generatedPDF !== row.invoice_id && !isGeneratingPDF && (
                         <button
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            handleGeneratePDF(row)
-                          }} // Trigger the PDF generation
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          //stopps expanding
+                          handleGeneratePDF(row)
+                        }} // Trigger the PDF generation
                           className="bg-[#02343F] text-gray-300 shadow-[#02343F]/3 shadow-lg p-3 rounded-lg hover:text-[#02343F]*3 transition-all duration-300 text-xs"
                         >
                           Generate PDF
