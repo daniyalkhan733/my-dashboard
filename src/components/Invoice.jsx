@@ -186,7 +186,7 @@ const InvoiceTable = () => {
                       {/* Only show the "Download PDF" button after the PDF is generated */}
                       {generatedPDF === row.invoice_id && (
                         <PDFDownloadLink
-                          document={<InvoicePDF invoiceData={invoiceData} />}
+                          document={<InvoicePDF invoiceData={row} />}
                           fileName={`invoice-${row.invoice_id}.pdf`}
                         >
                           {({ loading }) => (
@@ -194,7 +194,7 @@ const InvoiceTable = () => {
                               {loading ? (
                                 ""
                               ) : (
-                                <Download className="w-5 h-5 transition-transform group-hover:scale-110 animate-bounce " />
+                                <Download onClick={(e)=>e.stopPropagation()} className="w-5 h-5 transition-transform group-hover:scale-110 animate-bounce " />
                               )}
                               {loading ? "Loading..." : "Download PDF"}
                             </button>
