@@ -47,72 +47,115 @@ const InvoiceFilterAccordion = ({ filters, setFilters }) => {
       {isFilterOpen && (
         <div className="px-6 py-4 border-t border-[#F5E6D3] bg-white">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-            {/* Amount From */}
+            {/* Invoice ID */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">Amount From</label>
+              <label className="text-sm font-medium text-gray-700">#</label>
               <input
-                type="number"
-                value={filters.amountFrom || ""}
-                onChange={(e) => handleFilterChange("amountFrom", e.target.value)}
-                placeholder="Min amount..."
+                type="text"
+                value={filters.id || ""}
+                onChange={(e) => handleFilterChange("id", e.target.value)}
+                placeholder="Invoice ID..."
                 className="w-full p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
               />
             </div>
 
-            {/* Amount To */}
+            {/* From Date */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">Amount To</label>
-              <input
-                type="number"
-                value={filters.amountTo || ""}
-                onChange={(e) => handleFilterChange("amountTo", e.target.value)}
-                placeholder="Max amount..."
-                className="w-full p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
-              />
-            </div>
-
-            {/* From Date From */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">From Date (From)</label>
+              <label className="text-sm font-medium text-gray-700">From Date</label>
               <input
                 type="date"
-                value={filters.fromDateFrom || ""}
-                onChange={(e) => handleFilterChange("fromDateFrom", e.target.value)}
+                value={filters.from_date || ""}
+                onChange={(e) => handleFilterChange("from_date", e.target.value)}
                 className="w-full p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
               />
             </div>
 
-            {/* From Date To */}
+            {/* To Date */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">From Date (To)</label>
+              <label className="text-sm font-medium text-gray-700">To Date</label>
               <input
                 type="date"
-                value={filters.fromDateTo || ""}
-                onChange={(e) => handleFilterChange("fromDateTo", e.target.value)}
+                value={filters.to_date || ""}
+                onChange={(e) => handleFilterChange("to_date", e.target.value)}
                 className="w-full p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
               />
             </div>
 
-            {/* To Date From */}
+            {/* Status */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">To Date (From)</label>
-              <input
-                type="date"
-                value={filters.toDateFrom || ""}
-                onChange={(e) => handleFilterChange("toDateFrom", e.target.value)}
+              <label className="text-sm font-medium text-gray-700">Status</label>
+              <select
+                value={filters.status || ""}
+                onChange={(e) => handleFilterChange("status", e.target.value)}
                 className="w-full p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
-              />
+              >
+                <option value="">Select status...</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+              </select>
             </div>
 
-            {/* To Date To */}
+            {/* Amount */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">To Date (To)</label>
-              <input
-                type="date"
-                value={filters.toDateTo || ""}
-                onChange={(e) => handleFilterChange("toDateTo", e.target.value)}
-                className="w-full p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
-              />
+              <label className="text-sm font-medium text-gray-700">Amount</label>
+              <div className="flex space-x-2">
+                <input
+                  type="number"
+                  value={filters.amount_from || ""}
+                  onChange={(e) => handleFilterChange("amount_from", e.target.value)}
+                  placeholder="Min"
+                  className="w-1/2 p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
+                />
+                <input
+                  type="number"
+                  value={filters.amount_to || ""}
+                  onChange={(e) => handleFilterChange("amount_to", e.target.value)}
+                  placeholder="Max"
+                  className="w-1/2 p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
+                />
+              </div>
+            </div>
+
+            {/* Discount */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Discount</label>
+              <div className="flex space-x-2">
+                <input
+                  type="number"
+                  value={filters.discount_from || ""}
+                  onChange={(e) => handleFilterChange("discount_from", e.target.value)}
+                  placeholder="Min"
+                  className="w-1/2 p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
+                />
+                <input
+                  type="number"
+                  value={filters.discount_to || ""}
+                  onChange={(e) => handleFilterChange("discount_to", e.target.value)}
+                  placeholder="Max"
+                  className="w-1/2 p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
+                />
+              </div>
+            </div>
+
+            {/* Net Amount */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Net Amount</label>
+              <div className="flex space-x-2">
+                <input
+                  type="number"
+                  value={filters.net_amount_from || ""}
+                  onChange={(e) => handleFilterChange("net_amount_from", e.target.value)}
+                  placeholder="Min"
+                  className="w-1/2 p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
+                />
+                <input
+                  type="number"
+                  value={filters.net_amount_to || ""}
+                  onChange={(e) => handleFilterChange("net_amount_to", e.target.value)}
+                  placeholder="Max"
+                  className="w-1/2 p-2 border border-primary-50 rounded-md focus:outline-none focus:ring-2 focus:ring-[#02343F]"
+                />
+              </div>
             </div>
           </div>
 
@@ -131,7 +174,7 @@ const InvoiceFilterAccordion = ({ filters, setFilters }) => {
                   className="flex items-center bg-[#F5E6D3] px-2 py-1 rounded-md"
                 >
                   <span className="text-sm mr-2">
-                    {key}: {value}
+                    {key.replace(/_/g, " ")}: {value}
                   </span>
                   <button onClick={() => clearFilter(key)}>
                     <X className="w-4 h-4" />
